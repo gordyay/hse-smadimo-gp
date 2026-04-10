@@ -35,7 +35,7 @@
 | Статистика вторичных продаж .sol доменов | SNS Bonfida API | API эндпоинт [`https://sns-api.bonfida.com/v2/domains/history`](https://docs.sns.id/dev/sns-api/domains#history) | Ресурс доступен без авторизации |
 | Статистика вторичных продаж .eth доменов | Dune API | API эндпоинты [`https://api.dune.com/api/v1/sql/execute`](https://docs.dune.com/api-reference/executions/endpoint/execute-sql) и [`https://api.dune.com/api/v1/execution/{query_id}/results`](https://docs.dune.com/api-reference/executions/endpoint/get-execution-result) | Использован бесплатный API ключ |
 | Семантическая категория | Kaggle + Curlie.org | 2 сырых датасета доступных для скачивания: [URL Classification](https://www.kaggle.com/datasets/shaurov/website-classification-using-url) и [Curlie Directory Data](https://curlie.org/download) | Датасет curlie в очень неприменимом формате, был приведен к нормальному виду до этого проекта. В рамках проекта мы просто взяли готовый нормализованный датасет. |
-| Популярность домена | CloudFlare Radar | @Гордей заполни | Скачены TOP-100, TOP-200, TOP-500, …, TOP-1M самых популярных доменов с [сайта](https://radar.cloudflare.com/domains). |
+| Популярность домена | CloudFlare Radar | Доступны для скачивания файлы с TOP-100, TOP-200, ... TOP-1M доменов | Датасеты доступны на [сайте](https://radar.cloudflare.com/domains) без авторизации. |
 | Цена продажи в блокчейне TON | webdom.market | web-scraping страницы [https://webdom.market/analytics/history](https://webdom.market/analytics/history)  | Использована библиотека Selenium |
 | Длина, наличие букв/цифр/дефисов | EDA | Признаки добавлены при обработке данных | — |
 
