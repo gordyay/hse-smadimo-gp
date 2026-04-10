@@ -33,14 +33,8 @@
 | Список всех .sol доменов с именем, ценой и датой регистрации | SNS Bonfida API | API эндпоинт [`https://sns-api.bonfida.com/sales/registrations`](https://docs.sns.id/dev/sns-api/sales#registrations) | Ресурс доступен без авторизации |
 | Список всех .eth доменов с именем, ценой и датой регистрации | Thegraph API | API эндпоинт [`https://api.thegraph.com/subgraphs/name/ensdomains/ens`](https://thegraph.com/explorer/subgraphs/5XqPmWe6gjyrJtFn9cLy237i4cWw2j9HcUJEXsP5qGtH?view=Query&chain=arbitrum-one) | Не поняли как использовать API ключ (вероятно нужно задепать крипту для использования). Использовали эндпоинт без авторизации, с rate limits |
 | Статистика вторичных продаж .sol доменов | SNS Bonfida API | API эндпоинт [`https://sns-api.bonfida.com/v2/domains/history`](https://docs.sns.id/dev/sns-api/domains#history) | Ресурс доступен без авторизации |
-| Статистика вторичных продаж .eth доменов | Dune API | API эндпоинты 
-[`https://api.dune.com/api/v1/sql/execute`](https://docs.dune.com/api-reference/executions/endpoint/execute-sql)
-и
-[`https://api.dune.com/api/v1/execution/{query_id}/results`](https://docs.dune.com/api-reference/executions/endpoint/get-execution-result) | Использован бесплатный API ключ |
-| Семантическая категория | Kaggle + Curlie.org | 2 сырых датасета доступных для скачивания:
-[URL Classification](https://www.kaggle.com/datasets/shaurov/website-classification-using-url)
-и
-[Curlie Directory Data](https://curlie.org/download) | Датасет curlie в очень неприменимом формате, был приведен к нормальному виду до этого проекта. В рамках проекта мы просто взяли готовый нормализованный датасет. |
+| Статистика вторичных продаж .eth доменов | Dune API | API эндпоинты [`https://api.dune.com/api/v1/sql/execute`](https://docs.dune.com/api-reference/executions/endpoint/execute-sql) и [`https://api.dune.com/api/v1/execution/{query_id}/results`](https://docs.dune.com/api-reference/executions/endpoint/get-execution-result) | Использован бесплатный API ключ |
+| Семантическая категория | Kaggle + Curlie.org | 2 сырых датасета доступных для скачивания: [URL Classification](https://www.kaggle.com/datasets/shaurov/website-classification-using-url) и [Curlie Directory Data](https://curlie.org/download) | Датасет curlie в очень неприменимом формате, был приведен к нормальному виду до этого проекта. В рамках проекта мы просто взяли готовый нормализованный датасет. |
 | Популярность домена | CloudFlare Radar | @Гордей заполни | Скачены TOP-100, TOP-200, TOP-500, …, TOP-1M самых популярных доменов с [сайта](https://radar.cloudflare.com/domains). |
 | Цена продажи в блокчейне TON | webdom.market | web-scraping страницы [https://webdom.market/analytics/history](https://webdom.market/analytics/history)  | Использована библиотека Selenium |
 | Длина, наличие букв/цифр/дефисов | EDA | Признаки добавлены при обработке данных | — |
@@ -49,7 +43,17 @@
 
 - [x]  Подготовить описание проекта - Матвей Юдин
 - [x]  Заресерчить способы получения данных - Матвей Юдин
-- [ ]  Собрать все данные с помощью API — Марков Даниил
+- [x]  Собрать все данные с помощью API — Марков Даниил
 - [ ]  Собрать данные с помощью Selenium — Литвиненко Гордей
 - [ ]  Провести EDA — Литвиненко Гордей
 - [ ]  Подготовить презентацию — Вся команда
+
+## Структура репозитория
+- [parsers](./parsers/) — скрипты для парсинга данных с помощью API запросов и вэб-скрэпинга.
+- [raw_datasets](./raw_datasets/) — сырые необработанные датасеты, полученные в результате парсинга.
+- [datasets](./datasets/) — обработанные датасеты
+- ... @Гордей
+
+## Выводы
+
+[TODO]
