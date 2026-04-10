@@ -60,8 +60,7 @@ def fetch_registrations(
 
             res_json: dict = response.json()
             if not res_json.get("success"):
-                time.sleep(2 ** attempt)
-                continue
+                raise RuntimeError(f"No \"success\" in {res_json}")
             
             return res_json["result"]
 
@@ -107,6 +106,8 @@ def save_registrations_history():
         writer = csv.DictWriter(f, fieldnames=CSV_FIELDS, extrasaction='ignore')
         writer.writeheader()
         writer.writerows(sorted(results.values(), key=lambda l: l["unix_timestamp"]))
+    
+    logger.info(f"Выполнение скрипта завершено. Всего элементов: {len(results)}")
 
 
 if __name__ == "__main__":

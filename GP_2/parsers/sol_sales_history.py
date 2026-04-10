@@ -67,6 +67,7 @@ def fetch_history(
                 time.sleep(int(retry_after))
                 continue
             
+            response.raise_for_status()
             res_json = response.json()
             return res_json["data"], res_json["last_token"]
 
@@ -108,6 +109,8 @@ def save_sales_history(last_token: str = None):
         with open(DATASET_FILE, 'a') as f:
             writer = csv.DictWriter(f, fieldnames=CSV_FIELDS, extrasaction='ignore')
             writer.writerows(res)
+        
+    logger.info(f"Выполнение скрипта завершено. Всего элементов: {total_results}")
     
 
 if __name__ == "__main__":
@@ -119,8 +122,11 @@ if __name__ == "__main__":
             if r:
                 last_line = r[-1]
                 last_token = f"{last_line['unix_timestamp']}:{last_line['tx_signature']}:{last_line['domain_key']}"
+                logging.info(f"Скрипт начал выполняться с last_token = {last_token}")
+    
     if not last_token:
         with open(DATASET_FILE, 'w') as f:
             writer = csv.DictWriter(f, fieldnames=CSV_FIELDS, extrasaction='ignore')
             writer.writeheader()
+    
     save_sales_history(last_token)
