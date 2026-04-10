@@ -42,7 +42,7 @@ def fetch_registrations(
     session: httpx.Client,
     start_time: int,
     end_time: int,
-) -> list[list[int | str]]:
+) -> list[dict[str, str | int]]:
     params = {
         "start_time": start_time,
         "end_time": end_time,
@@ -102,6 +102,12 @@ def save_registrations_history():
         if i % 10 == 0:
             logger.info(f"[Итерация #{i}] Успешно получено {n_registrations} строк. Всего элементов: {len(results)}")
             time.sleep(0.1)
+
+    with open(DATASET_FILE, 'w') as f:
+        writer = csv.DictWriter(f, fieldnames=CSV_FIELDS, extrasaction='ignore')
+        writer.writeheader()
+        writer.writerows(sorted(results.values(), key=lambda l: l["unix_timestamp"]))
+
 
 if __name__ == "__main__":
     save_registrations_history()
