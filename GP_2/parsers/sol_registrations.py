@@ -38,6 +38,7 @@ BASE_URL = "https://sns-api.bonfida.com"
 CSV_FIELDS = ["unix_timestamp", "tx_signature", "domain_name", "domain_key", "usd_price", "bidder_key"]
 RESULTS_LIMIT = 500
 
+
 def fetch_registrations(
     session: httpx.Client,
     start_time: int,
@@ -108,6 +109,7 @@ def save_registrations_history():
         writer.writerows(sorted(results.values(), key=lambda l: l["unix_timestamp"]))
     
     logger.info(f"Выполнение скрипта завершено. Всего элементов: {len(results)}")
+    session.close()
 
 
 if __name__ == "__main__":

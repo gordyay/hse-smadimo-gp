@@ -35,6 +35,7 @@ logger.setLevel(logging.INFO)
 DATASET_FILE = DATASETS_DIR / "ETHUSDT_1d.csv"
 BASE_URL = "https://api.binance.com"
 
+
 def fetch_klines(
     session: httpx.Client,
     start_time: int,
@@ -73,6 +74,7 @@ def save_price_history():
     while True:
         klines = fetch_klines(session, start_time)
         if not klines:
+            session.close()
             return
         with open(DATASET_FILE, 'a') as f:
             writer = csv.writer(f)
@@ -81,7 +83,7 @@ def save_price_history():
         start_time = klines[-1][0] + 1
         last_saved_date = datetime.fromtimestamp(start_time // 1000).strftime("%d.%m.%Y")
         logger.info(f"Успешно сохранено {len(klines)} строк. Последняя сохраненная дата: {last_saved_date}")
-        
+    
 
 if __name__ == "__main__":
     save_price_history()

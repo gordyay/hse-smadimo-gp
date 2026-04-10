@@ -136,6 +136,7 @@ def save_registrations_history(last_id: str = "0x0"):
         f.write(last_id)
 
     logger.info(f"Выполнение скрипта завершено. Всего элементов: {total_results}")
+    session.close()
 
 
 if __name__ == "__main__":
@@ -148,6 +149,7 @@ if __name__ == "__main__":
     if not last_id:
         last_id = "0x0"
         with open(DATASET_FILE, 'w') as f:
-            csv.DictWriter(f, fieldnames=CSV_FIELDS).writeheader()
+            writer = csv.DictWriter(f, fieldnames=CSV_FIELDS)
+            writer.writeheader()
     
     save_registrations_history(last_id)

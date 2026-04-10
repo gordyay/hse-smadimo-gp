@@ -46,6 +46,7 @@ BASE_URL = "https://sns-api.bonfida.com"
 CSV_FIELDS = ["unix_timestamp", "tx_signature", "domain_key", "usd_price", "bidder_key"]
 RESULTS_LIMIT = 200
 
+
 def fetch_history(
     session: httpx.Client,
     last_token: str = None,
@@ -111,6 +112,7 @@ def save_sales_history(last_token: str = None):
             writer.writerows(res)
         
     logger.info(f"Выполнение скрипта завершено. Всего элементов: {total_results}")
+    session.close()
     
 
 if __name__ == "__main__":
