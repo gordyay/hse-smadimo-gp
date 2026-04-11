@@ -1,0 +1,11 @@
+httpx
+python-dotenv
+selenium
+webdriver-manager
+requests
+pandas
+numpy
+matplotlib
+seaborn
+jupyterlab
+ipykernel
