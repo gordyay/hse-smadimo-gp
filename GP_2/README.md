@@ -15,7 +15,7 @@
 - Есть ли цифра (binary)
 - Есть ли буква (binary)
 - Есть ли дефис (binary)
-- Семантическая категория (string)
+- Категория контента домена в WEB-2 (string)
 - Цена регистрации в ENS (float $)
 - Цена регистрации в SNS (float $)
 - Дата регистрации в ENS (datetime)
@@ -33,8 +33,8 @@
 | Список всех .sol доменов с именем, ценой и датой регистрации | SNS Bonfida API | API эндпоинт [`https://sns-api.bonfida.com/sales/registrations`](https://docs.sns.id/dev/sns-api/sales#registrations) | Ресурс доступен без авторизации |
 | Список всех .eth доменов с именем, ценой и датой регистрации | Thegraph API | API эндпоинт [`https://api.thegraph.com/subgraphs/name/ensdomains/ens`](https://thegraph.com/explorer/subgraphs/5XqPmWe6gjyrJtFn9cLy237i4cWw2j9HcUJEXsP5qGtH?view=Query&chain=arbitrum-one) | Не поняли как использовать API ключ (вероятно нужно задепать крипту для использования). Использовали эндпоинт без авторизации, с rate limits |
 | Статистика вторичных продаж .sol доменов | SNS Bonfida API | API эндпоинт [`https://sns-api.bonfida.com/v2/domains/history`](https://docs.sns.id/dev/sns-api/domains#history) | Ресурс доступен без авторизации |
-| Статистика вторичных продаж .eth доменов | Dune API | API эндпоинты [`https://api.dune.com/api/v1/sql/execute`](https://docs.dune.com/api-reference/executions/endpoint/execute-sql) и [`https://api.dune.com/api/v1/execution/{query_id}/results`](https://docs.dune.com/api-reference/executions/endpoint/get-execution-result) | Использован бесплатный API ключ |
-| Семантическая категория | Kaggle + Curlie.org | 2 сырых датасета доступных для скачивания: [URL Classification](https://www.kaggle.com/datasets/shaurov/website-classification-using-url) и [Curlie Directory Data](https://curlie.org/download) | Датасет curlie в очень неприменимом формате, был приведен к нормальному виду до этого проекта. В рамках проекта мы просто взяли готовый нормализованный датасет. |
+| Статистика вторичных продаж .eth доменов | Dune API | API эндпоинты [`https://api.dune.com/api/v1/sql/execute`](https://docs.dune.com/api-reference/executions/endpoint/execute-sql) и [`https://api.dune.com/api/v1/execution/{query_id}/results`](https://docs.dune.com/api-reference/executions/endpoint/get-execution-result); Таблица [`nft.trades`](https://docs.dune.com/data-catalog/curated/nft-trades/evm/nft-trades)  | Использован бесплатный API ключ |
+| Категория контента web2 домена | Kaggle + Curlie.org | 2 сырых датасета доступных для скачивания: [URL Classification](https://www.kaggle.com/datasets/shaurov/website-classification-using-url) и [Curlie Directory Data](https://curlie.org/download) | Датасет curlie в очень неприменимом формате, был приведен к нормальному виду до этого проекта. В рамках проекта мы просто взяли готовый нормализованный датасет. |
 | Популярность домена | CloudFlare Radar | Доступны для скачивания файлы с TOP-100, TOP-200, ... TOP-1M доменов | Датасеты доступны на [сайте](https://radar.cloudflare.com/domains) без авторизации. |
 | Цена продажи в блокчейне TON | webdom.market | web-scraping страницы [https://webdom.market/analytics/history](https://webdom.market/analytics/history)  | Использована библиотека Selenium |
 | Длина, наличие букв/цифр/дефисов | EDA | Признаки добавлены при обработке данных | — |
@@ -45,8 +45,8 @@
 - [x]  Заресерчить способы получения данных - Матвей Юдин
 - [x]  Собрать все данные с помощью API — Марков Даниил
 - [x]  Собрать данные с помощью Selenium — Матвей Юдин
-- [x]  Провести EDA — Литвиненко Гордей
-- [ ]  Подготовить презентацию — Вся команда
+- [x]  Провести EDA — Литвиненко Гордей и Марков Даниил
+- [x]  Подготовить презентацию — Марков Даниил и Матвей Юдин
 
 ## Структура репозитория
 - [parsers](./parsers/) — скрипты для парсинга данных с помощью API запросов и вэб-скрэпинга.
